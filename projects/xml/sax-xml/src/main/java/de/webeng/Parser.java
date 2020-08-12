@@ -10,32 +10,43 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MySaxParser {
+public class Parser {
+
+  SAXParserFactory factory = SAXParserFactory.newInstance();
+  SAXParser saxParser = factory.newSAXParser();
+  DefaultHandler handler = new SaxHandler();
+
+  public Parser() throws ParserConfigurationException, SAXException {
+  }
+
+  public void parse(InputStream xmlStream) throws SAXException, IOException {
+    saxParser.parse(xmlStream, handler);
+  }
 
   class SaxHandler extends DefaultHandler {
-    boolean bfname = false;
-    boolean blname = false;
-    boolean bnname = false;
-    boolean bsalary = false;
+    boolean isFirstName = false;
+    boolean isLastName = false;
+    boolean isNickName = false;
+    boolean isSalary = false;
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
       System.out.println("Start Element :" + qName);
 
       if (qName.equalsIgnoreCase("FIRSTNAME")) {
-        bfname = true;
+        isFirstName = true;
       }
 
       if (qName.equalsIgnoreCase("LASTNAME")) {
-        blname = true;
+        isLastName = true;
       }
 
       if (qName.equalsIgnoreCase("NICKNAME")) {
-        bnname = true;
+        isNickName = true;
       }
 
       if (qName.equalsIgnoreCase("SALARY")) {
-        bsalary = true;
+        isSalary = true;
       }
     }
 
@@ -44,35 +55,27 @@ public class MySaxParser {
       System.out.println("End Element :" + qName);
     }
 
-    public void characters(char ch[], int start, int length) {
+    public void characters(char[] ch, int start, int length) {
 
-      if (bfname) {
+      if (isFirstName) {
         System.out.println("First Name : " + new String(ch, start, length));
-        bfname = false;
+        isFirstName = false;
       }
 
-      if (blname) {
+      if (isLastName) {
         System.out.println("Last Name : " + new String(ch, start, length));
-        blname = false;
+        isLastName = false;
       }
 
-      if (bnname) {
+      if (isNickName) {
         System.out.println("Nick Name : " + new String(ch, start, length));
-        bnname = false;
+        isNickName = false;
       }
 
-      if (bsalary) {
+      if (isSalary) {
         System.out.println("Salary : " + new String(ch, start, length));
-        bsalary = false;
+        isSalary = false;
       }
     }
-  }
-
-  public void parse(InputStream xmlStream) throws ParserConfigurationException, SAXException, IOException {
-    SAXParserFactory factory = SAXParserFactory.newInstance();
-    SAXParser saxParser = factory.newSAXParser();
-
-    DefaultHandler handler = new SaxHandler();
-    saxParser.parse(xmlStream, handler);
   }
 }
