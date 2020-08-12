@@ -9,4 +9,11 @@ public class Company {
     public Company(List<Staff> staff) {
         this.staff = staff;
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "staff=" + staff +
+                '}';
+    }
 }

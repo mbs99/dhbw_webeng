@@ -28,4 +28,13 @@ public class Name {
     public String getNickName() {
         return nickName;
     }
+
+    @Override
+    public String toString() {
+        return "Name{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                '}';
+    }
 }

@@ -18,4 +18,12 @@ public class Staff {
     public Double getSalary() {
         return salary;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffName=" + staffName +
+                ", salary=" + salary +
+                '}';
+    }
 }
