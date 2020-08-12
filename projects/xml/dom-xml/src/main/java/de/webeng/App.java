@@ -1,5 +1,8 @@
 package de.webeng;
 
+import de.webeng.model.Company;
+import de.webeng.model.Staff;
+import de.webeng.model.base.Name;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -7,12 +10,18 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
   public static void main(String[] args) {
 
+    App.createDoc();
+  }
+
+  private static void readDoc() {
     try {
       Parser parser = new Parser();
       Document xmlDoc = parser.parse(Parser.class.getResourceAsStream("/xml/company.xml"));
@@ -24,12 +33,12 @@ public class App {
         App.handleStaffElement(((Element) staff));
       }
 
-      NodeList children =root.getChildNodes();
+      NodeList children = root.getChildNodes();
       for (int i = 0; i < children.getLength(); i++) {
         Node child = children.item(i);
         if (child.getNodeType() == Node.ELEMENT_NODE) {
           App.handleStaffElement(((Element) child));
-        } else if(child.getNodeType() == Node.TEXT_NODE) {
+        } else if (child.getNodeType() == Node.TEXT_NODE) {
           System.out.println(child.getNodeValue());
         }
       }
@@ -45,5 +54,22 @@ public class App {
 
     String lastName = staff.getElementsByTagName("lastname").item(0).getTextContent();
     System.out.println("lastname=" + lastName);
+  }
+
+  private static void createDoc() {
+    try {
+      CompanyBuilder builder = new CompanyBuilder();
+
+      Staff jon = new Staff(new Name("John", "Doe"), 120000d);
+      List<Staff> staff = new ArrayList<>();
+      staff.add(jon);
+
+      Company company = new Company(staff);
+
+      builder.toXml(company, System.out);
+
+    } catch (ParserConfigurationException | TransformerException e) {
+      e.printStackTrace();
+    }
   }
 }
