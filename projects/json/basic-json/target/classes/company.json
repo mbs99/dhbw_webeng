@@ -1,0 +1,14 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Westwood",
+    "nickName": "John",
+    "salary": 100000
+  },
+  {
+    "firstName": "Natalie",
+    "lastName": "Portwoman",
+    "nickName": "Natalie",
+    "salary": 200000
+  }
+]
