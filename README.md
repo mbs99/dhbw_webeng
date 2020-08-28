@@ -18,3 +18,16 @@ $ export JAVA_HOME=...
 $ export MAVEN_HOME=...
 $ export PATH=%JAVA_HOME%\bin;%MAVEN_HOME%\bin;%PATH%
 ```
+### Linux
+- je nach Distribution
+```sh
+$ sudo apt install openjdk maven
+$ sudo yum install openjdk maven
+$ ...
+```
+### Mac
+- Homebrew-Paketmanager (https://brew.sh/index_de)
+```sh
+$ brew update
+$ brew install openjdk@11 maven
+```
