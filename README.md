@@ -1,4 +1,4 @@
-# Beispielprogramme zur Vorleseung
+# Beispielprogramme zur Vorlesung
 
 # Benötigte SW
 - JDK-11
