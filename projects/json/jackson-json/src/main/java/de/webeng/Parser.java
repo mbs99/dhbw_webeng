@@ -10,9 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Parser {
+    private ObjectMapper mapper = new ObjectMapper();
 
     public Company parse(InputStream jsonStream) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+
         List<Staff> staff = Arrays.asList(mapper.readValue(jsonStream, Staff[].class));
         return new Company(staff);
     }
