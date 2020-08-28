@@ -1,14 +1,16 @@
-[
-  {
-    "firstname": "John",
-    "lastname": "Westwood",
-    "nickname": "John",
-    "salary": 100000
-  },
-  {
-    "firstname": "Natalie",
-    "lastname": "Portwoman",
-    "nickname": "Natalie",
-    "salary": 200000
-  }
-]
+{
+  "staff": [
+    {
+      "firstname": "John",
+      "lastname": "Westwood",
+      "nickname": "John",
+      "salary": 100000
+    },
+    {
+      "firstname": "Natalie",
+      "lastname": "Portwoman",
+      "nickname": "Natalie",
+      "salary": 200000
+    }
+  ]
+}
