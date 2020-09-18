@@ -21,22 +21,44 @@
 			<section data-markdown>
 				<textarea data-template>
 					#### SW-Architektur in verteilten Systemen
-					- Klassische Schichtenmodelle
-					- Monolith vs. MicroServices
+					- Klassische Schichtenmodelle - 3 Tier
+					- MicroServices
 				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
 					#### Klassische Schichtenmodelle
-					- UI
-					- Logic
-					- Database
+					<img data-src="assets/layer.png">
 				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-					#### Monolith vs. MicroServices
-					
+					#### Klassische Schichtenmodelle - Merkmale
+					- Schichten können auf unterschiedlicher HW (Server/VM) laufen
+					- Zugriff auf andere Schichten erfolgt immer remote
+					- Zugriff nur "von oben nach unten" erlaubt
+					- Variante: Zugriff nur "von oben nach unten" erlaubt, Schichten dürfen übersprungen werden
+					- eigenes Datenmodell pro Schicht zur Entkopplung
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Klassische Schichtenmodelle - Vorteile
+					- klare Trennung von Verantwortlichkeiten (Frontend-Entwickler, Backend-Entwickler, DB-Admins, ...)
+					- Entkopplung der Schichten, diese können einfacher(er) ausgetauscht werden (z.B. UI, Datenbank)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Klassische Schichtenmodelle - Nachteile
+					- Neue Funktionen betreffen meist alle Schichten -> Abstimmung 
+					- viel Boilerplate-Code nötig (Mapping)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### MicroServices
+					<img data-src="assets/microservices.svg">
 				</textarea>
 			</section>
 			</section>
