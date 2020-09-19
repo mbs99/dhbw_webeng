@@ -1,86 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DHBW WenEng Marc Ströbel (m.stroebel@gmx.de)</title>
 
-	<title>DHBW WenEng Marc Ströbel (m.stroebel@gmx.de)</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
 
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+					- Technische Grundlagen
+					  - HTTP
+					  - XML/XSD
+					  - JSON
+					  - Dependency Injection / IOC
+					  - Spring Framework
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					- Basics Web-Programmierung
+					  - HTTP-Request/Response
+					  - Server-Side HTML (Formulare etc.)
+					- SW-Architektur in verteilten Systemen
+					  - klassische Schichtenmodelle
+					  - MicroServices
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					- Überblick SOA (Service-orientierte Architekturen)
+					- Webservices (SOAP, WSDL, ...)
+					- REST
+					  - REST vs SOAP
+					  - REST-APIs
+					  - Techniken (Caching, Content Negotiation, …)
+					- Websockets
+					- Messaging
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### Technische Grundlagen - HTTP
+					<img data-src="assets/iso.jpg">
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### Merkmale
+					- Zustandslos
+					- Synchron (Request – Response)
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### Aufbau einer Nachricht
+					- Header (z.B. Inhalt, Kodierung, ...)
+					- Body
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### Http-Request
+					```
+					METHODE /path HTTP/version
+					Header1: value
+					Header2: value
+					[Leerzeile]
+					[optional Request-Body]
+					```
+					```
+					GET /index.html HTTP/1.1
+					Host: www.heise.de
+					```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### Http-Response
+					```
+					HTTP/version statuscode explanation
+					Header1: value
+					Header2: value
 
-<body>
-	<div class="reveal">
-		<div class="slides">
-			<section data-markdown>
-				<textarea data-template>
-					#### SW-Architektur in verteilten Systemen
-					- Klassische Schichtenmodelle - 3 Tier
-					- MicroServices
-				</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
+					[Response-Body]
+					```
+					```
+					HTTP/1.1 200 OK
+					Date: Mon, 27 Jul 2009 12:28:53 GMT
+					Server: Apache/2.2.14 (Win32)
+					Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+					Content-Length: 88
+					Content-Type: text/html
+					Connection: Closed
+
+					<html>
+					<body>
+					<h1>Hello, World!</h1>
+					</body>
+					</html>
+					```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Http-Methoden
+				- GET
+				  - Kein Body!
+				  - Übertragung von Daten per Url oder Header
+				  - Semantik: Daten abrufen → „lesen“
+
+				- POST
+				  - Übertragung von Daten per RequestBody, Url oder Header
+				  - Semantik: Daten senden → „schreiben“
+			</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Http-Methoden
+				- PUT
+				  - Übertragung von Daten per RequestBody, Url oder Header
+				  - Semantik: Daten ändern
+				- PATCH
+				  - Übertragung von Daten per RequestBody, Url oder Header
+				  - Semantik: Daten partiell ändern
+			  </textarea
+          >
+		</section>
+		<section data-markdown>
+			<textarea data-template>
+				#### Http-Methoden
+				- DELETE
+				  - Übertragung von Daten per RequestBody, Url oder Header
+				  - Semantik: Daten löschen
+				- Weitere: OPTIONS, HEAD, CONNECT, TRACE
+				</textarea
+			>
+		  </section>
+        <section data-markdown>
+          <textarea data-template>
 					#### Klassische Schichtenmodelle
 					<img data-src="assets/layer.png">
-				</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
 					#### Klassische Schichtenmodelle - Merkmale
 					- Schichten können auf unterschiedlicher HW (Server/VM) laufen
 					- Zugriff auf andere Schichten erfolgt immer remote
 					- Zugriff nur "von oben nach unten" erlaubt
 					- Variante: Zugriff nur "von oben nach unten" erlaubt, Schichten dürfen übersprungen werden
 					- eigenes Datenmodell pro Schicht zur Entkopplung
-				</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
 					#### Klassische Schichtenmodelle - Vorteile
 					- klare Trennung von Verantwortlichkeiten (Frontend-Entwickler, Backend-Entwickler, DB-Admins, ...)
 					- Entkopplung der Schichten, diese können einfacher(er) ausgetauscht werden (z.B. UI, Datenbank)
-				</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
 					#### Klassische Schichtenmodelle - Nachteile
 					- Neue Funktionen betreffen meist alle Schichten -> Abstimmung 
 					- viel Boilerplate-Code nötig (Mapping)
-				</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
 					#### MicroServices
 					<img data-src="assets/microservices.svg">
-				</textarea>
-			</section>
-			</section>
-			<section>Slide 2</section>
-		</div>
-	</div>
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### MicroServices - Merkmale
+					- fachliche Funktionen werden in technisch getrennten Services umgesetzt
+					- Service-Schnitt nach Use Cases (Produktsuche, Warenkorb, Lager, ...)
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### MicroServices - Vorteile
+					- Services können unabhängig geändert werden 
+					- Freiheiten bei Technologie-Auswahl
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+					#### MicroServices - Nachteile
+					- Service-Aufrufe immer remote (Latenz, Ausfallsicherheit, ...)
+					- aufwendiges Deployment / Monitoring
+				</textarea
+          >
+        </section>
+      </div>
+    </div>
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-		Reveal.initialize({
-			hash: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-		});
-	</script>
-</body>
-
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
