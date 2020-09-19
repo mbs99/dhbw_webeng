@@ -152,15 +152,462 @@
 				  - Semantik: Daten partiell ändern
 			  </textarea
           >
-		</section>
-		<section data-markdown>
-			<textarea data-template>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
 				#### Http-Methoden
 				- DELETE
 				  - Übertragung von Daten per RequestBody, Url oder Header
 				  - Semantik: Daten löschen
 				- Weitere: OPTIONS, HEAD, CONNECT, TRACE
 				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Beispiele für Http-Header
+				- Content-Type: application/json
+				  - Server sendet Typ des Inhalts in der Antwort
+				- Accept: application/json
+				  - Client sendet Wunschformat in der Anfrage
+				- Cache-Control: public, max-age=30
+				  - Antwort darf für die angegebene Dauer zwischengespeichert werden
+				- Eigene Header möglich, Konvention Präfix X-….
+				  - X-my-custom-header: ….
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Beispiele für Http-Statuscodes
+				- 200 Ok - Standardantwort
+				- 201 Created - Daten wurden angelegt
+				- 202 Accepted - Daten angenommen aber noch nicht verarbeitet  
+				- 204 No content – wie 200 Ok, aber leere Antwort
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Beispiele für Http-Statuscodes
+				- 301 Moved Permanently – Inhalt ist unter neuer Url erreichbar
+				- 304 Not Modified – Inhalt hat sich nicht geändert
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Beispiele für Http-Statuscodes
+				- 400 Bad request – Anfrage fachlich fehlerhaft
+				- 401 Unauthorized – Zugriff nicht erlaubt
+				- 404 Not found – Inhalt existiert nicht
+				- 415 Unsupported Media Type – angefordertes oder gesendetes Format wird nicht unterstützt
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Beispiele für Http-Statuscodes
+				- 500 Internal server error – Fehler, Exception, ...
+				- 501 Not implemented – Http-Methode wird nicht unterstützt
+				- 504 Timeout
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### XML (Extensible Markup Language)
+				Ermöglicht strukturierte (und damit maschinenlesbare) Ablage von (Text-)Daten
+				``` xml
+				<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+				<catalog>
+				<painting>
+					<title>Memory of the Garden at Etten</title>
+					<artist>Vincent Van Gogh</artist>
+					<date>November 1888</date>
+					<description>Zwei Frauen schauen nach links. Eine dritte arbeitet in ihrem Garten.</description>
+				</painting>
+				<painting>
+					<title>The Swing</title>
+					<artist>Pierre-Auguste Renoir</artist>
+					<date>1876</date>
+					<description>Ein junges Mädchen auf einer Schaukel. Zwei Männer und ein kleines Kind schauen zu.</description>
+				</painting>
+				<!-- Viele weitere Gemälde... -->
+				</catalog>
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Aufbau
+				- Dokument beginnt mit XML-Header
+				- Tags müssen geschlossen werden `<e> … </e>`
+				- Kurzform für leere Elemente `<e/>`
+				- Inhalt startet mit Root-Element
+				- eigene Tags, beliebig erweiterbar
+				- Vgl. HTML → vorgegebene Tags `<a>, <h1>`
+				- Gleiches gilt für Attribute `<e name=“test“></e>`
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				- Elemente können in Namespaces gruppiert werden
+				  - Packages in Java
+
+				```
+				<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+				<myNs:e xmlns:myNs=“my-ns-url“> … </myNs:e>
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Verwendung
+				- Datenformat für Webservices
+				- Konfigurationsdateien
+				- Allg. Datenaustausch zwischen SW-Systemen, bei Standard-SW (SAP…) oft XML Export/Import vorhanden
+				- MS-Office-Dateiformate docx (komprimiertes XML)
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### XSD (XML Schema Definition)
+				- XML beschreibt Daten bzw. deren Aufbau
+				- XSD beschreibt den Aufbau eines XML-Dokuments
+
+				```
+				<xs:complexType name="painting">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string"/>
+					<xs:element name="artist" type="xs:string"/>
+					<xs:element name="date"  type="xs:date"/>
+					<xs:element name="description" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="id" type="xs:integer"/>
+				</xs:complexType>
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				##### dynamische Elemente
+
+				``` xml
+				<xs:complexType name="computer">
+				<xs:choice>
+					<xs:element name="desktop" type="pc-Typ"/>
+					<xs:element name="laptop" type="laptop-Typ"/>
+				</xs:choice>
+				</xs:complexType>
+				```
+				##### Format von Inhalten definieren
+
+				``` xml
+				<xs:simpleType name="plz">
+					<xs:restriction base="xs:string">
+						<xs:pattern value="(D )?[0-9]{5}"/>
+					</xs:restriction>
+				</xs:simpleType>
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Verwendung
+				- Schnittstellenbeschreibung
+				- Validierung von Dokumenten
+				- Code-Generierung (z.B. Java-Klassen)
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### XML-Verarbeitung mit JAVA
+				- SAX-Parser
+				- DOM-Parser
+				- DataBinding-Frameworks
+				- XML-Queries mit XPath
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				https://github.com/mbs99/dhbw_webeng/tree/master/projects/xml
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### JSON (JavaScript Object Notation)
+				- „einfachere“ Alternative zu XML
+				- Browser waren früher ™ weniger optimiert
+				- XML-Verarbeitung im Browser langsam, große Dokumente
+
+				``` json
+				[
+					{
+					"title": "Memory of the Garden at Etten",
+					"artist": "Vincent Van Gogh",
+					"date": "November 1888",
+					"description":"Zwei Frauen schauen nach links. Eine dritte arbeitet in ihrem Garten." ,
+					},
+					{
+					...
+					}
+				]
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### JSON-Schema
+				Definiert Struktur von JSON-Dokumenten
+
+				``` json
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"title": "The root schema",
+	"required": ["staff"],
+	"properties": {
+		"staff": {
+			"$id": "#/properties/staff",
+			"type": "array",
+			"title": "The staff schema",
+			"items": {
+				"$id": "#/properties/staff/items",
+				"anyOf": [
+					{
+						...
+					}
+				]
+			}
+		}
+	}
+}
+				```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				  #### JSON-Verarbeitung mit Java
+				  - Json-Parser
+				  - Databinding-Frameworks
+				  - Schema-Validierung
+				  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+			https://github.com/mbs99/dhbw_webeng/tree/master/projects/json
+				  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+			#### Dependency Injection / Inversion of control
+			Pattern für wart-/testbaren Sourecode in großen Projekten
+			- Komponenten werden nicht selbst erzeugt, sondern von einer zentralen Instanz („Framework“) bereitgestellt
+			- vs. OO → Datenkapselung / Information Hiding
+			- Erleichtert Unit-Tests (Einsatz von Mocks)
+					</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				  ``` java
+// OO klassisch
+public class Service {
+	private Parser parser = new Parser();
+	// ...
+
+	public Service() {
+	}
+}
+// DI
+public class Service {
+	private ParserInterface parser;
+
+	public Service(ParserInterface parser) {
+		this.parser = parser;
+	}
+}
+				  ```
+				  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+			#### Spring
+			Java-Framework für serverseitige Entwicklung
+			- DI-Container
+			- Modular aufgebaut (Web, DB, Security, ...)
+			- Spring Boot für Microservices (z.B. Embedded-HttpServer)
+					  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+			Spring Initializr (https://start.spring.io/) für Projekt-Setup, alternativ per IDE-Plugin
+			- Auswahl Spring-Version, Java-Version
+			- Deployment Spring Boot (Fat-Jar) oder App-Server (war)
+			- Spring Module
+			- Download als ZIP, entpacken und in IDE importieren
+						</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+			Links zu Spring
+			- Spring: https://spring.io/
+			- Tutorials: https://www.baeldung.com/				
+				
+			</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				Webentwickung mit Spring MVC
+				- Zugriff auf HttpRequest/Reponse
+				- Server-side HTML mit Templates
+			  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				``` java
+				@Controller
+				public class Service {
+				
+					@GetMapping(“/1“)
+					//Spring liefert hier immer den aktuellen Request
+					public void readRequest(HttpServletRequest currentRequest) {
+						//Zugriff aus Inhalte, Header, Body usw.
+						// ...
+					}
+				
+					@PostMapping(“/2“)
+					//Spring liefert hier immer den aktuellen Accept-Header und Request-Body
+					public void readBody(@RequestHeader(“accept“) String accept, @RequestBody String currentBody) {
+						
+					}	
+				
+				}				
+				```
+			  </textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+``` java
+@Controller
+public class Service {
+
+	@GetMapping(“/1“)
+	public String readRequest(HttpServletRequest currentRequest) {
+		//liefert View-Template main!
+		return “main“;
+	}
+
+	@ResponseBody
+	@GetMapping(“/2“)
+	//Spring liefert hier immer den aktuellen Accept-Header und Request-Body
+	public String readBody(HttpServletRequest currentRequest) {
+		// liefert Wert main als Text
+		return “main“;
+	}	
+
+}
+```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+``` java
+@Controller
+public class Service {
+
+	@GetMapping(“/1“)
+	public Info readRequest(HttpServletRequest currentRequest) {
+		// liefert serialisiertes Info-Object (als JSON, XML…) je nach installierten Mappern!
+		return new Info();
+	}
+
+	@ResponseBody
+	@GetMapping(“/2“)
+	public ResponseEntity readBody(HttpServletRequest currentRequest) {
+		ResponseEntity response = …
+		//Header setzen, Body setzen …
+		// ...
+		return response;
+	}	
+
+}
+```
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Links zu Spring-MVC
+				- RequestBody: https://www.baeldung.com/spring-request-response-body
+				- ResponseEntity: https://www.baeldung.com/spring-response-entity
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				#### Server-side HTML mit Spring MVC / Thymeleaf (Template-Engine)
+				- Setup per Spring Initializr mit MVC + Thymeleaf
+				- Thymeleaf ist Default bei Spring, Alternative JSP usw.
+				</textarea
+          >
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+				  #### Server-side HTML mit Spring MVC / Thymeleaf
+				  - Ablage HTML-Template im konfigurierten Order (Default src/main/resources/templates)
+				  ``` html
+				  <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- … -->
+</head>
+<body>
+<h1>Welcome</h1>
+<h2 th:utext="${message}">..!..</h2>
+				  ```
+				  </textarea
+          >
+		</section>
+		<section data-markdown>
+			<textarea data-template>
+					#### Server-side HTML mit Spring MVC / Thymeleaf
+					View-Model-Binding per Spring MVC
+					``` java
+					@...
+					class PageController {
+					
+						@...
+						public String renderPage1(Model model) {
+					
+							model.setAttribute(“message“, “Hallo Welt“);
+					
+							return “page1“;
+						}
+					}
+					```
+					</textarea
 			>
 		  </section>
         <section data-markdown>
