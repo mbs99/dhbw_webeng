@@ -1,53 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
 
-    <title>DHBW WenEng Marc Ströbel (m.stroebel@gmx.de)</title>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link rel="stylesheet" href="dist/reset.css" />
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+	<title>DHBW WenEng Marc Ströbel (m.stroebel@gmx.de)</title>
 
-    <!-- Theme used for syntax highlighted code -->
-    <link
-      rel="stylesheet"
-      href="plugin/highlight/monokai.css"
-      id="highlight-theme"
-    />
-  </head>
+	<link rel="stylesheet" href="dist/reset.css" />
+	<link rel="stylesheet" href="dist/reveal.css" />
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme" />
 
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section data-markdown>
-          <textarea data-template>
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				<textarea data-template>
 					- Technische Grundlagen
 					  - HTTP
 					  - XML/XSD
 					  - JSON
 					  - Dependency Injection / IOC
 					  - Spring Framework
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					- Basics Web-Programmierung
 					  - HTTP-Request/Response
 					  - Server-Side HTML (Formulare etc.)
 					- SW-Architektur in verteilten Systemen
 					  - klassische Schichtenmodelle
 					  - MicroServices
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					- Überblick SOA (Service-orientierte Architekturen)
 					- Webservices (SOAP, WSDL, ...)
 					- REST
@@ -56,34 +48,35 @@
 					  - Techniken (Caching, Content Negotiation, …)
 					- Websockets
 					- Messaging
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				#### Technische Grundlagen - HTTP
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Technische Grundlagen - HTTP
 					<img data-src="assets/iso.jpg">
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Merkmale
 					- Zustandslos
 					- Synchron (Request – Response)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Aufbau einer Nachricht
 					- Header (z.B. Inhalt, Kodierung, ...)
 					- Body
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Http-Request
 					```
 					METHODE /path HTTP/version
@@ -96,11 +89,10 @@
 					GET /index.html HTTP/1.1
 					Host: www.heise.de
 					```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Http-Response
 					```
 					HTTP/version statuscode explanation
@@ -124,11 +116,10 @@
 					</body>
 					</html>
 					```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Http-Methoden
 				- GET
 				  - Kein Body!
@@ -138,11 +129,10 @@
 				- POST
 				  - Übertragung von Daten per RequestBody, Url oder Header
 				  - Semantik: Daten senden → „schreiben“
-			</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+			</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Http-Methoden
 				- PUT
 				  - Übertragung von Daten per RequestBody, Url oder Header
@@ -150,21 +140,19 @@
 				- PATCH
 				  - Übertragung von Daten per RequestBody, Url oder Header
 				  - Semantik: Daten partiell ändern
-			  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+			  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Http-Methoden
 				- DELETE
 				  - Übertragung von Daten per RequestBody, Url oder Header
 				  - Semantik: Daten löschen
 				- Weitere: OPTIONS, HEAD, CONNECT, TRACE
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Beispiele für Http-Header
 				- Content-Type: application/json
 				  - Server sendet Typ des Inhalts in der Antwort
@@ -174,48 +162,48 @@
 				  - Antwort darf für die angegebene Dauer zwischengespeichert werden
 				- Eigene Header möglich, Konvention Präfix X-….
 				  - X-my-custom-header: ….
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Beispiele für Http-Statuscodes
 				- 200 Ok - Standardantwort
 				- 201 Created - Daten wurden angelegt
 				- 202 Accepted - Daten angenommen aber noch nicht verarbeitet  
 				- 204 No content – wie 200 Ok, aber leere Antwort
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Beispiele für Http-Statuscodes
 				- 301 Moved Permanently – Inhalt ist unter neuer Url erreichbar
 				- 304 Not Modified – Inhalt hat sich nicht geändert
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Beispiele für Http-Statuscodes
 				- 400 Bad request – Anfrage fachlich fehlerhaft
 				- 401 Unauthorized – Zugriff nicht erlaubt
 				- 404 Not found – Inhalt existiert nicht
 				- 415 Unsupported Media Type – angefordertes oder gesendetes Format wird nicht unterstützt
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Beispiele für Http-Statuscodes
 				- 500 Internal server error – Fehler, Exception, ...
 				- 501 Not implemented – Http-Methode wird nicht unterstützt
 				- 504 Timeout
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				  #### Technische Grundlagen - XML
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### XML (Extensible Markup Language)
 				Ermöglicht strukturierte (und damit maschinenlesbare) Ablage von (Text-)Daten
 				``` xml
@@ -236,11 +224,10 @@
 				<!-- Viele weitere Gemälde... -->
 				</catalog>
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Aufbau
 				- Dokument beginnt mit XML-Header
 				- Tags müssen geschlossen werden `<e> … </e>`
@@ -249,11 +236,10 @@
 				- eigene Tags, beliebig erweiterbar
 				- Vgl. HTML → vorgegebene Tags `<a>, <h1>`
 				- Gleiches gilt für Attribute `<e name=“test“></e>`
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				- Elemente können in Namespaces gruppiert werden
 				  - Packages in Java
 
@@ -261,21 +247,24 @@
 				<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
 				<myNs:e xmlns:myNs=“my-ns-url“> … </myNs:e>
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Verwendung
 				- Datenformat für Webservices
 				- Konfigurationsdateien
 				- Allg. Datenaustausch zwischen SW-Systemen, bei Standard-SW (SAP…) oft XML Export/Import vorhanden
 				- MS-Office-Dateiformate docx (komprimiertes XML)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				  #### Technische Grundlagen - XSD
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### XSD (XML Schema Definition)
 				- XML beschreibt Daten bzw. deren Aufbau
 				- XSD beschreibt den Aufbau eines XML-Dokuments
@@ -291,11 +280,10 @@
 				<xs:attribute name="id" type="xs:integer"/>
 				</xs:complexType>
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				##### dynamische Elemente
 
 				``` xml
@@ -315,36 +303,37 @@
 					</xs:restriction>
 				</xs:simpleType>
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Verwendung
 				- Schnittstellenbeschreibung
 				- Validierung von Dokumenten
 				- Code-Generierung (z.B. Java-Klassen)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### XML-Verarbeitung mit JAVA
 				- SAX-Parser
 				- DOM-Parser
 				- DataBinding-Frameworks
 				- XML-Queries mit XPath
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				https://github.com/mbs99/dhbw_webeng/tree/master/projects/xml
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				  #### Technische Grundlagen - JSON
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### JSON (JavaScript Object Notation)
 				- „einfachere“ Alternative zu XML
 				- Browser waren früher ™ weniger optimiert
@@ -363,11 +352,10 @@
 					}
 				]
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### JSON-Schema
 				Definiert Struktur von JSON-Dokumenten
 
@@ -394,36 +382,37 @@
 	}
 }
 				```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				  #### JSON-Verarbeitung mit Java
 				  - Json-Parser
 				  - Databinding-Frameworks
 				  - Schema-Validierung
-				  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 			https://github.com/mbs99/dhbw_webeng/tree/master/projects/json
-				  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				#### Technische Grundlagen - Dependency Injection / Inversion of control
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 			#### Dependency Injection / Inversion of control
 			Pattern für wart-/testbaren Sourecode in großen Projekten
 			- Komponenten werden nicht selbst erzeugt, sondern von einer zentralen Instanz („Framework“) bereitgestellt
 			- vs. OO → Datenkapselung / Information Hiding
 			- Erleichtert Unit-Tests (Einsatz von Mocks)
-					</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				  ``` java
 // OO klassisch
 public class Service {
@@ -442,48 +431,53 @@ public class Service {
 	}
 }
 				  ```
-				  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				#### Technische Grundlagen - Spring
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 			#### Spring
 			Java-Framework für serverseitige Entwicklung
 			- DI-Container
 			- Modular aufgebaut (Web, DB, Security, ...)
 			- Spring Boot für Microservices (z.B. Embedded-HttpServer)
-					  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+					  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 			Spring Initializr (https://start.spring.io/) für Projekt-Setup, alternativ per IDE-Plugin
 			- Auswahl Spring-Version, Java-Version
 			- Deployment Spring Boot (Fat-Jar) oder App-Server (war)
 			- Spring Module
 			- Download als ZIP, entpacken und in IDE importieren
-						</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 			Links zu Spring
 			- Spring: https://spring.io/
 			- Tutorials: https://www.baeldung.com/				
 				
-			</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+			</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				#### Basics Web-Programmierung mit Spring
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				Webentwickung mit Spring MVC
 				- Zugriff auf HttpRequest/Reponse
 				- Server-side HTML mit Templates
-			  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+			  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				``` java
 				@Controller
 				public class Service {
@@ -503,11 +497,10 @@ public class Service {
 				
 				}				
 				```
-			  </textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+			  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 ``` java
 @Controller
 public class Service {
@@ -528,11 +521,10 @@ public class Service {
 
 }
 ```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 ``` java
 @Controller
 public class Service {
@@ -554,27 +546,24 @@ public class Service {
 
 }
 ```
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Links zu Spring-MVC
 				- RequestBody: https://www.baeldung.com/spring-request-response-body
 				- ResponseEntity: https://www.baeldung.com/spring-response-entity
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				#### Server-side HTML mit Spring MVC / Thymeleaf (Template-Engine)
 				- Setup per Spring Initializr mit MVC + Thymeleaf
 				- Thymeleaf ist Default bei Spring, Alternative JSP usw.
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 				  #### Server-side HTML mit Spring MVC / Thymeleaf
 				  - Ablage HTML-Template im konfigurierten Order (Default src/main/resources/templates)
 				  ``` html
@@ -587,11 +576,10 @@ public class Service {
 <h1>Welcome</h1>
 <h2 th:utext="${message}">..!..</h2>
 				  ```
-				  </textarea
-          >
-		</section>
-		<section data-markdown>
-			<textarea data-template>
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Server-side HTML mit Spring MVC / Thymeleaf
 					View-Model-Binding per Spring MVC
 					``` java
@@ -607,91 +595,151 @@ public class Service {
 						}
 					}
 					```
-					</textarea
-			>
-		  </section>
-        <section data-markdown>
-          <textarea data-template>
+					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### SW-Architektur in verteilten Systemen
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Klassische Schichtenmodelle
 					<img data-src="assets/layer.png">
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Klassische Schichtenmodelle - Merkmale
 					- Schichten können auf unterschiedlicher HW (Server/VM) laufen
 					- Zugriff auf andere Schichten erfolgt immer remote
 					- Zugriff nur "von oben nach unten" erlaubt
 					- Variante: Zugriff nur "von oben nach unten" erlaubt, Schichten dürfen übersprungen werden
 					- eigenes Datenmodell pro Schicht zur Entkopplung
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Klassische Schichtenmodelle - Vorteile
 					- klare Trennung von Verantwortlichkeiten (Frontend-Entwickler, Backend-Entwickler, DB-Admins, ...)
 					- Entkopplung der Schichten, diese können einfacher(er) ausgetauscht werden (z.B. UI, Datenbank)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### Klassische Schichtenmodelle - Nachteile
 					- Neue Funktionen betreffen meist alle Schichten -> Abstimmung 
 					- viel Boilerplate-Code nötig (Mapping)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### MicroServices
 					<img data-src="assets/microservices.svg">
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### MicroServices - Merkmale
 					- fachliche Funktionen werden in technisch getrennten Services umgesetzt
 					- Service-Schnitt nach Use Cases (Produktsuche, Warenkorb, Lager, ...)
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### MicroServices - Vorteile
 					- Services können unabhängig geändert werden 
 					- Freiheiten bei Technologie-Auswahl
-				</textarea
-          >
-        </section>
-        <section data-markdown>
-          <textarea data-template>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### MicroServices - Nachteile
 					- Service-Aufrufe immer remote (Latenz, Ausfallsicherheit, ...)
 					- aufwendiges Deployment / Monitoring
-				</textarea
-          >
-        </section>
-      </div>
-    </div>
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Überblick SOA (Service-orientierte Architekturen)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Überblick SOA (Service-orientierte Architekturen)
+					- Idee
+					- Ziele
+					- Beispiel für (technische) Umsetzung
+					  - Webservices
+					  - SOAP-Protokoll
+					  - WSDL
+					- Java-Stack
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### SOA-Idee
+					- technologieneutral, SOA != Webservices
+					- Funktionalität als wiederverwendbare (Basis-)Komponenten (=Services) umsetzen
+					- Services können zu neuen (höherwertigen) Services zusammengesetzt (orchestriert) werden
+					- Services sind autark, d.h. können eigenständig genutzt werden
+					- Services sind remote erreichbar
+					- Services werden zentral bereitgestellt (z.B. Service-Registry) und verwaltet (SOA-Governance)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### SOA-Ziele
+					- Vermeidung von Redundanz
+					- Standardisierung
 
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
+					<img data-src="assets/soa.svg">
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### Technische Umsetzung
+					- Java/C#-Umfeld hauptsächlich SOAP-basierte Webservices *
+					- SOAP (Simple Object Access Protocol) *
+					- Java Application Server (JEE) als Runtime / Monitoring / ...
+					- Enterprise Service Bus zur Orchestrierung
+					- UDDI-Service-Registry für zentrale Verwaltung
+					- ...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### SOAP-Protokoll
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Webservices (SOAP, WSDL, ...)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST
+				</textarea>
+			</section>
+		</div>
+	</div>
 
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      });
-    </script>
-  </body>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+	</script>
+</body>
+
 </html>
