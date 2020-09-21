@@ -43,14 +43,14 @@
 					- Überblick SOA (Service-orientierte Architekturen)
 					- Webservices (SOAP, WSDL, ...)
 					- REST
-					  - REST vs SOAP
 					  - REST-APIs
 					  - Techniken (Caching, Content Negotiation, …)
+					  - REST vs SOAP
 					- Websockets
 					- Messaging
 				</textarea>
 			</section>
-			<section data-markdown>
+			<section data-markdown id="techbase">
 				<textarea data-template>
 				#### Technische Grundlagen - HTTP
 				  </textarea>
@@ -795,7 +795,7 @@ public class Service {
 			<section data-markdown>
 				<textarea data-template>
 					##### Beispiel
-```
+``` xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:sch="http://www.baeldung.com/springsoap/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -878,6 +878,143 @@ public class Service {
 					#### REST
 				</textarea>
 			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST (Representational State Transfer)
+					- übernimmt Architektur des WWW in die (Enterprise-)Anwendungsentwicklung
+					- zustandlos
+					- konsequente Nutzung von Http und dessen Features (vgl. SOAP)
+					  - z.B. HTTP Post legt neuen Datensatz an, HTTP DELETE löscht
+					  - eindeutige Adressierung über Urls (.../person/47 oder .../person?id=47)
+					  - Http-Caching
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					- HATEOAS (Hypermedia as the Engine of Application State)
+					  - selbstbeschreibende Resourcen
+					  - Resource enthält Links zu weiteren (möglichen) Aktionen
+					  - Client verhält sich wie ein Browser
+					  - Beispiel folgt ;-)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST-Anfrage
+```
+GET /accounts/123abc HTTP/1.1
+Host: bank.example.com
+Accept: application/json
+```
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST-Antwort
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: ...
+
+{
+   "account": {
+      "account_id": "123abc",
+       "balance": {
+          "currency": "EUR",
+          "value": 100.0
+       },
+       "links": {
+          "deposit": "/accounts/123abc/deposit",
+          "withdraw": "/accounts/123abc/withdraw",
+          "transfer": "/accounts/123abc/transfer",
+          "close": "/accounts/123abc/close"
+       }
+   }
+}
+```
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					- ermöglicht generische Clients
+					  - Links parsen
+					  - UI generieren (z.B. Buttons) und Link hinterlegen
+					  - falls Konto im Minus werden die Links für Abheben oder Überweisung nicht in der Antwort gesendet
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### Richardson Maturity Model
+					| Level        | Eigenschaften         
+					| -------------|----------------------
+					| 0            | verwendet XML-RPC oder SOAP<br/>Service wird über einen einzelnen URI adressiert<br/>verwendet eine einzelne HTTP-Methode (oft POST)
+					| 1            | verwendet verschiedene URIs und Ressourcen<br/>verwendet eine einzelne HTTP-Methode (oft POST)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					##### Richardson Maturity Model
+					| Level        | Eigenschaften         
+					| -------------|----------------------
+					| 2            | verwendet verschiedene URIs und Ressourcen<br/>verwendet mehrere HTTP-Methoden
+					| 3            | basiert auf HATEOAS und verwendet daher Hypermedia für Navigation<br/>verwendet verschiedene URIs und Ressourcen<br/>verwendet mehrere HTTP-Methoden
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Techniken
+					- Content-Negotiation
+					  - Client steuert Datenformat über Accept-Header
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST-Apis
+					- TODO
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST vs. SOAP
+					|                | REST             | SOAP         
+					|----------------| -----------------|----------------------
+					|Semantik        | Resourcen/Objekte| Methoden
+					|Protokoll       | HTTP             | unabhängig
+					|Daten           | beliebig         | XML, weitere bedingt möglich (Attachments)
+					|Standardisierung| gering           | hoch
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST vs. SOAP
+					- Überweisung REST
+```
+// lege neuen Umsatz an
+HTTP PUT /account/123
+{
+	transfer: {
+		value: 100
+	    currency: "EUR"
+	    targetAccount: 124
+	    type: "TRANSFER"
+	}
+}
+```
+					- Überweisung SOAP
+```
+<!-- Methode transfer aufrufen-->
+<m:transfer xmlns:m="http://www.my-bank.de/soap">
+            <!-- Parameter-->
+</m:transfer>
+```
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### REST vs. SOAP
+					- letztlich Architekturentscheidung, welcher Ansatz besser zu fachlichen Anforderungen passt
+				</textarea>
+			</section>
 		</div>
 	</div>
 
@@ -891,11 +1028,10 @@ public class Service {
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
-
+			slideNumber: true,
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
 		});
 	</script>
 </body>
-
 </html>
