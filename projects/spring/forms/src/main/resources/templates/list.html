@@ -15,17 +15,22 @@
 <h1>Person List</h1>
 <a href="addPerson">Add Person</a>
 <br/><br/>
-<div>
+<form th:action="@{/deletePerson}"
+      th:object="${personListForm}" method="POST">
     <table border="1">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Delete?</th>
         </tr>
-        <tr th:each="person : ${persons}">
+        <tr th:each="person, itemStat : *{persons}">
             <td th:utext="${person.firstName}">...</td>
             <td th:utext="${person.lastName}">...</td>
+            <td><input type="checkbox" th:field="*{persons[__${itemStat.index}__].deletePerson}"/>
+                <input type="hidden" th:field="*{persons[__${itemStat.index}__].id}"/></td>
         </tr>
     </table>
-</div>
+    <input type="submit" id="submitButton" th:value="Save">
+</form>
 </body>
 </html>

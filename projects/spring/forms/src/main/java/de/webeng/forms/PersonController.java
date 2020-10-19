@@ -2,6 +2,7 @@ package de.webeng.forms;
 
 import de.webeng.forms.model.Person;
 import de.webeng.forms.view.PersonForm;
+import de.webeng.forms.view.PersonListForm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Controller
 public class PersonController {
@@ -38,7 +41,10 @@ public class PersonController {
   @GetMapping(value = {"/personList"})
   public String personList(Model model) {
 
-    model.addAttribute("persons", persons);
+    PersonListForm personListForm = new PersonListForm();
+    personListForm.setPersons(this.persons);
+
+    model.addAttribute("personListForm", personListForm);
 
     return "list";
   }
@@ -53,9 +59,7 @@ public class PersonController {
   }
 
   @PostMapping(value = {"/addPerson"})
-  public String savePerson(
-      Model model, //
-      @ModelAttribute("personForm") PersonForm personForm) {
+  public String savePerson(Model model, @ModelAttribute("personForm") PersonForm personForm) {
 
     String firstName = personForm.getFirstName();
     String lastName = personForm.getLastName();
@@ -72,5 +76,26 @@ public class PersonController {
 
     model.addAttribute("errorMessage", errorMessage);
     return "addPerson";
+  }
+
+  @PostMapping(value = {"/deletePerson"})
+  public String deletePerson(
+      Model model, //
+      @ModelAttribute("personListForm") PersonListForm personListForm) {
+
+    List<Integer> idsToDelete =
+        personListForm.getPersons().stream()
+            .filter(p -> Objects.equals(Boolean.TRUE, p.getDeletePerson()))
+            .map(p -> p.getId())
+            .collect(Collectors.toList());
+
+    List<Person> personsToDelete =
+        PersonController.persons.stream()
+            .filter(p -> idsToDelete.stream().anyMatch(id -> Objects.equals(id, p.getId())))
+            .collect(Collectors.toList());
+
+    PersonController.persons.removeAll(personsToDelete);
+
+    return "redirect:/personList";
   }
 }
