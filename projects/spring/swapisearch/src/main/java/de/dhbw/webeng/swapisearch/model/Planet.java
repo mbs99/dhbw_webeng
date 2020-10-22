@@ -158,6 +158,8 @@ public class Planet {
     buffer.append(this.terrain);
     buffer.append(" ");
 
-    return buffer.toString().toLowerCase().contains(query);
+    return (null == query || query.isEmpty() || query.isBlank())
+        ? false
+        : buffer.toString().toLowerCase().contains(query.toLowerCase());
   }
 }
