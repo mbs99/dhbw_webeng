@@ -57,4 +57,13 @@ public class ViewController {
 
     return "search";
   }
+
+  @GetMapping({"/search"})
+  public String getPlainSearchView(
+      Model model, @ModelAttribute("searchForm") SearchForm searchForm) {
+
+    searchForm.setResults(new PlanetInfo[] {});
+    searchForm.setSearchInput("");
+    return "search";
+  }
 }
