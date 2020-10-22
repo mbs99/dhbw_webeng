@@ -85,9 +85,13 @@ public class SwapisearchService {
     if (rawResponse.statusCode() == HttpStatus.OK.value()) {
       PlanetSearchResult planetSearchResult =
           this.mapper.readValue(rawResponse.body(), PlanetSearchResult.class);
-      List<Planet> planets = Arrays.asList(planetSearchResult.getResults());
+      // nötig, da Arrays.asList() eine nicht veränderbare Liste liefert...
+      List<Planet> planets = new ArrayList<>(Arrays.asList(planetSearchResult.getResults()));
       if (planetSearchResult.getNext() != null) {
-        planets.addAll(Arrays.asList(getAllPlanets(URI.create(planetSearchResult.getNext()))));
+        Planet[] partialPlanets = getAllPlanets(URI.create(planetSearchResult.getNext()));
+        if (0 != partialPlanets.length) {
+          planets.addAll(Arrays.asList(partialPlanets));
+        }
       }
       return planets.toArray(new Planet[] {});
     }

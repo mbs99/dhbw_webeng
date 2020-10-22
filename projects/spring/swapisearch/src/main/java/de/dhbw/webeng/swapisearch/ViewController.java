@@ -32,6 +32,7 @@ public class ViewController {
   public String getSearchView(Model model, @ModelAttribute("searchForm") SearchForm searchForm) {
 
     Planet[] planets = this.swapisearchService.findPlanet(searchForm.getSearchInput());
+    // Planet[] planets = this.swapisearchService.findPlanetByName(searchForm.getSearchInput());
 
     PlanetInfo[] planetInfos =
         Arrays.stream(planets)
