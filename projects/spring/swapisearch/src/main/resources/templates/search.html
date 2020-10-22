@@ -18,30 +18,32 @@
       th:object="${searchForm}" method="POST">
     <input type="text" id="searchInput" th:field="*{searchInput}">
     <input type="submit" id="submitButton" th:value="Search">
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Climate</th>
-            <th>Diameter</th>
-            <th>Gravity</th>
-            <th>Orbital period</th>
-            <th>Population</th>
-            <th>Rotation period</th>
-            <th>Surface water</th>
-            <th>Terrain</th>
-        </tr>
-        <tr th:each="planet, itemStat : *{results}">
-            <td th:utext="${planet.name}">...</td>
-            <td th:utext="${planet.climate}">...</td>
-            <td th:utext="${planet.diameter}">...</td>
-            <td th:utext="${planet.gravity}">...</td>
-            <td th:utext="${planet.orbital_period}">...</td>
-            <td th:utext="${planet.population}">...</td>
-            <td th:utext="${planet.rotation_period}">...</td>
-            <td th:utext="${planet.surface_water}">...</td>
-            <td th:utext="${planet.terrain}">...</td>
-        </tr>
-    </table>
+    <th:block th:if="*{results.length != 0}">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Climate</th>
+                <th>Diameter</th>
+                <th>Gravity</th>
+                <th>Orbital period</th>
+                <th>Population</th>
+                <th>Rotation period</th>
+                <th>Surface water</th>
+                <th>Terrain</th>
+            </tr>
+            <tr th:each="planet, itemStat : *{results}">
+                <td th:utext="${planet.name}">...</td>
+                <td th:utext="${planet.climate}">...</td>
+                <td th:utext="${planet.diameter}">...</td>
+                <td th:utext="${planet.gravity}">...</td>
+                <td th:utext="${planet.orbital_period}">...</td>
+                <td th:utext="${planet.population}">...</td>
+                <td th:utext="${planet.rotation_period}">...</td>
+                <td th:utext="${planet.surface_water}">...</td>
+                <td th:utext="${planet.terrain}">...</td>
+            </tr>
+        </table>
+    </th:block>
 </form>
 </body>
 </html>
