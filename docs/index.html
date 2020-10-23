@@ -612,6 +612,70 @@ public class Service {
 			</section>
 			<section data-markdown>
 				<textarea data-template>
+					#### Authentifizierung in Webanwendungen
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### Grundlagen
+					- wenn möglich etablierte Frameworks/Bibliotheken benutzen
+					- Java: Spring Security, Apache Shiro
+					- getestete Standardverfahren verwenden
+					- absolute Sicherheits existiert nicht, es muss benutzbar bleiben
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### (einfache) Varianten (Auszug)
+					- HTTP Basic Auth
+					- HTML Form Login
+					- ...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### HTTP Basic Auth - Merkmale
+					- Teil des HTTP Protokolls
+					- Übertragung als Http-Header
+					- standardmäßig keine Verschlüsselung -> nur mit HTTPS sinnvoll
+					- Logout nur über Umwege möglich, Anmeldung wird im Browser bis zum Beenden gecached
+					- Login-Popup im Browser nicht konfigurierbar
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### HTTP Basic Auth - Einsatz
+					- Absicherung von unkritischen APIs
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				https://github.com/mbs99/dhbw_webeng/tree/master/projects/spring/basic-auth
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### HTML Form Login - Merkmale
+					- protokollunabhängig
+					- Übertragung der Login-Daten als HTTP-Formular
+					- Speicherung z.B. in serverseitiger Session
+					- Logout unterstützt
+					- Login-Seite bel. umsetzbar
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### HTTP Basic Auth - Einsatz
+					- Absicherung von klassischen Webanwendungen
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				https://github.com/mbs99/dhbw_webeng/tree/master/projects/spring/login-demo
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
 					#### SW-Architektur in verteilten Systemen
 				</textarea>
 			</section>
