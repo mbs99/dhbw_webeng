@@ -34,6 +34,7 @@ public class CountryEndpoint {
         response.setCountry(this.mapCountry(country));
 
         return response;
+
     }
 
     private de.mbs.basicsoap.api.Country mapCountry(Country country) {

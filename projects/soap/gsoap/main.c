@@ -1,13 +1,13 @@
 #include "CountriesPortSoap11.nsmap" // XML namespace mapping table (only needed once at the global level)
 #include "soapH.h"                   // client stubs, serializers, etc.
 
-int main()
+int main(int argc, char **argv)
 {
   struct soap *soap = soap_new1(SOAP_C_UTFSTRING); // allocate and initialize a context
   struct _ns1__getCountryRequest request;
-  request.name = "Germany";
+  request.name = argv[1];
   struct _ns1__getCountryResponse response;
-  if (soap_call___ns1__getCountry(soap, NULL, NULL, &request, &response) == SOAP_OK)
+  if (soap_call___ns1__getCountry(soap, "http://localhost:8080/ws", NULL, &request, &response) == SOAP_OK)
   {
     printf("%s\n", response.country->name);
     printf("%i\n", response.country->population);
@@ -33,11 +33,15 @@ int main()
 
     default:
     {
+      printf("%s\n", "Unknown currency");
     }
     }
   }
   else
+  {
     soap_print_fault(soap, stderr);
+  }
+
   soap_destroy(soap); // delete managed deserialized C++ instances
   soap_end(soap);     // delete other managed data
   soap_free(soap);    // free the soap struct context data

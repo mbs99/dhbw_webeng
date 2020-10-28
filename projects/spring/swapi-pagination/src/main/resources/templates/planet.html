@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Swapi pagination sample</title>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Swapi pagination sample</span>
+</nav>
+<div class="container"
+     th:object="${planetPage}">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQvbW4J8-TR0aT6QvkM7xKQvPIwXZhwldTRsA&usqp=CAU"
+                     class="card-img-top" alt="Planet image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="*{name}"></h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="'Climate: ' + *{climate}"></li>
+                        <li class="list-group-item" th:text="'Diameter: ' + *{diameter}"></li>
+                        <li class="list-group-item" th:text="'Gravity: ' + *{gravity}"></li>
+                        <li class="list-group-item" th:text="'Orbital period: ' + *{orbital_period}"></li>
+                        <li class="list-group-item" th:text="'Population: ' + *{population}"></li>
+                        <li class="list-group-item" th:text="'Rotation period: ' + *{rotation_period}"></li>
+                        <li class="list-group-item" th:text="'Surface water: ' + *{surface_water}"></li>
+                        <li class="list-group-item" th:text="'Terrain: ' + *{terrain}"></li>
+                    </ul>
+                    <th:block th:if="*{not residents.isEmpty()}">
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                               aria-expanded="false" aria-controls="collapseExample">
+                                People
+                            </a>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <a th:each="resident : *{residents.entrySet()}"
+                                   th:href="@{/people(id=${resident.value})}" th:text="${resident.key}"></a>
+                            </div>
+                        </div>
+                        </p>
+                    </th:block>
+                    <p>
+                        <th:block th:if="*{previousId != -1}">
+                            <a class="btn btn-primary" th:href="@{/planet(id=*{previousId})}" role="button">Previous</a>
+                        </th:block>
+                        <th:block th:if="*{nextId != -1}">
+                            <a class="btn btn-primary" th:href="@{/planet(id=*{nextId})}" role="button">Next</a>
+                        </th:block>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
