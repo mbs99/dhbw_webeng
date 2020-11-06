@@ -1092,6 +1092,83 @@ HTTP PUT /account/123
 					- letztlich Architekturentscheidung, welcher Ansatz besser zu fachlichen Anforderungen passt
 				</textarea>
 			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### WebSockets
+				  </textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### Problem: auf serverseitige Updates reagieren
+					- HTTP: Request - Response
+					- keine "vollduplex" Verbindung, Verbindung nur einseitig
+					- Browser: meist keine öffentliche Adresse, Verbindungsaufbau Server -> Client nicht möglich
+				  </textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### Klassische Lösung: Polling
+					<img data-src="assets/long_polling.png">
+				  </textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### Funktioniert, aber..
+					- Overhead
+					- Events können "verpasst" werden (evtl. am Server cachen...)
+					- Latenz (z.B. für Spiele ungeeignet  )
+				  </textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### Vorteile WebSockets
+					- vollduplex
+				  </textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### WebSockets
+					<img data-src="assets/websocket.png">
+				  </textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### WebSocket Protocol Upgrade
+```
+Browser:
+
+GET /chatService HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 8
+```
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					#### WebSocket Protocol Upgrade
+```
+Server:
+
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: superchat
+```
+				</textarea>
+			</section>
+			<section data-markdown id="techbase">
+				<textarea data-template>
+					#### WebSockets - Bibliotheken / Server
+					- Server: Apache, Nginx, Tomcat...
+					- Browser/Client: z.B. Stompjs
+				  </textarea>
+			</section>
 		</div>
 	</div>
 
