@@ -1169,6 +1169,228 @@ Sec-WebSocket-Protocol: superchat
 					- Browser/Client: z.B. Stompjs
 				  </textarea>
 			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## Vorlesung Webservices
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Themen
+					- Historie
+					- Architektur
+					- Cloud-Technologien ({s|i|p}aas)
+					- Cloud-native
+					- ...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Historie
+					- Mainframe
+					- Desktop-Anwendungen (FatClient)
+					- Client/Server-Anwendungen (z.B. Java EE)
+					- verteilte Architekturen (Browser-UI, GL, DB)
+					- Apps
+					- Cloud-Anwendungen
+					- ...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Mainframe
+					- serverzentriert, Logik + UI am Server
+					- "dumme" Terminals
+					- proprietär
+					- teuer
+					- "Ich denke, dass es weltweit einen Markt für vielleicht fünf Computer gibt" - Thomas Watson (IBM)
+ 				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Desktop-Anwendungen
+					- Preisverfall, IBM-PC
+					- Logik + UI am Client
+					- relativ freie Technologiewahl
+					- "Inseln", wenig Schnittstellen
+					- "Es gibt keinen Grund, warum jeder einen Computer zu Hause haben sollte." - Ken Olsen (DEC)
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Client/Server-Anwendungen
+					- Logik am Server
+					- UI am Client
+					- meist 1:1 Beziehung, 1 Client, 1 Backend
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### verteilte Architekturen
+					- s. Client/Server
+					- SOA-Hype
+					- 1:n , 1 Client, mehrere Backends
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Apps
+					- s. verteilte Architekturen
+					- n:m 
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Cloud-Anwendungen
+					- s. verteilte Architekturen
+					- There's no cloud, it's just someone else's computer.
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Herausforderungen...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Klassisches IT-Umfeld
+					- eigenes RZ
+					- knappe Resourcen
+					- gewachsene Prozesse (Dauer HW-Bestellung)
+					- Kostendruck
+					- trifft auf ...
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### neue Geschäftsanforderungen
+					- Agilität
+					- Globalisierung
+					- neue Marktbedingungen: Winner takes all
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Probleme
+					- Wartung (Arbeitszeit 07-18 Uhr vs. globale Verfügbarkeit)
+					- Lastspitzen (Black Friday...)
+					- Big Data
+					- IT-Skills
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Cloud-Technologien
+					- Saas (Software as a service)
+					- Iaas (Infrastructure as a service)
+					- Paas (Platform as a service)
+					- Cloud-native
+				</textarea>
+			</section>
+			<section id="pizza-as-a-service">
+				<h2>Pizza as a Service</h2>
+				<p><img data-src="assets/pizzaaas.jpg" /></p>
+				<p><span class="mini">Quelle: Albert Barron, IBM</span></p>
+			</section>
+			<section id="as-a-service">
+				<h2>? as a Service</h2>
+				<p><img data-src="assets/xaas.svg" /></p>
+			</section>
+			<section id="typen-von-clouds" data-markdown>
+				### Typen von Clouds
+				- Traditional IT
+				- Public Cloud
+				- Private Cloud
+				- Hybrid Cloud
+			</section>
+			<section id="traditionelle-it" data-markdown>
+				### Traditionelle IT- Alles In-House
+				- Anforderungen erfassen
+				- Beschaffung
+				- Integration in existierende Systeme
+				- Strom, Netzwerk, Kühlung
+			</section>
+			<section id="public-cloud" data-markdown>
+				### Public Cloud
+				- betrieben von einem Dienstleister **für die Öffentlichkeit**
+				- Massengeschäft
+				- **keine** Anpassungen für einzelne Kunden
+			</section>
+			<section id="private-cloud" data-markdown>
+				### Private Cloud
+				- betrieben von einem Dienstleister für **einen** Kunden, oder
+				- vom Kunden selbst für die eigene Organisation
+				- auf kundeneigener oder Dienstleister-Hardware
+			</section>
+			<section id="hybrid-cloud" data-markdown>
+				### Hybrid Cloud
+				- Verbindung von public und private Cloud
+				- Workload kann frei verschoben werden, je nach Anforderung
+			</section>
+			<section id="potentiale-1" data-markdown>
+				### Potentiale (1)
+				- Einsparung von Personalkosten durch Standardisierung und Automatisierung von
+				- Konfiguration
+				- Betrieb
+				- Verwaltung
+				- Überwachung
+			</section>
+			<section id="potentiale-2" data-markdown>
+				### Potentiale (2)
+				- Verbesserte Kapitalnutzung durch erhöhte Auslastung der Hardware
+				- Verringerte Lizenzkosten durch gemeinsamen Betrieb
+				- Beschleunigte Bereitstellung von Resourcen (Minuten statt Tagen)
+			</section>
+			<section id="risikofaktoren" data-markdown>
+				### Risikofaktoren (1)
+				- Vendor Lock-in
+				- Gewährleistung und Haftung
+				- Cloud-Anbieter haben ggf. Geschäftsbeziehung mit Endanwender (Fernabsatzgesetz, AGB, MWSt.)
+				- Urheberrecht (an Software und den mit ihr erstellten Werken)
+				- Datenschutz (“EU-Cloud”)
+			</section>
+			<section id="risikofaktoren" data-markdown>
+				### Cloud-native
+				- pets vs. cattle
+				- 12 factor apps
+			</section>
+			<section id="pets-vs-cattle" data-markdown>
+				### pets vs. cattle
+				- Jemand installiert Standard-Software auf einem Server
+				- Eine andere Person kopiert selbstentwickelte Software dorthin und startet sie manuell
+				- Ein Dritter konfiguriert System- und Anwendungssoftware
+				- Was passiert, wenn der Server kaputt geht?
+			</section>
+			<section id="pets-vs-cattle" data-markdown>
+				### pets vs. cattle
+				- Automatisierung
+				- Infrastructure as code
+				- Tools Chef, Ansible ...
+			</section>
+			<section id="die-12-faktoren-1" data-markdown>
+				### Die 12 Faktoren (1)
+				- Eine im Versionsmanagementsystem verwaltete Codebase, viele Deployments
+				- Abhängigkeiten explizit deklarieren und isolieren
+				- die Konfiguration in Umgebungsvariablen ablegen
+			</section>
+			<section id="die-12-faktoren-2" data-markdown>
+				### Die 12 Faktoren (2)
+				- Unterstützende Dienste als angehängte Ressourcen behandeln
+				- Build- und Run-Phase strikt trennen
+				- Die App als einen oder mehrere Prozesse ausführen
+			</section>
+			<section id="die-12-faktoren-3" data-markdown>
+				### Die 12 Faktoren (3)
+				- Dienste durch das Binden von Ports exportieren
+				- Nebenläufigkeit wird durch das Skalieren individueller Prozesse ermöglicht
+				- Schneller Start/Stopp ermöglicht robuste Anwendungen
+			</section>
+			<section id="die-12-faktoren-4" data-markdown>
+				### Die 12 Faktoren (4)
+				- Entwicklung, Staging und Produktion so ähnlich wie möglich halten
+				- Logs als Strom von Ereignissen behandeln
+				- Admin/Management-Aufgaben als einmalige Vorgänge behandeln
+			</section>
 		</div>
 	</div>
 
