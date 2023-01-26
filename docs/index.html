@@ -517,13 +517,11 @@ public class Service {
 ``` java
 @Controller
 public class Service {
-
 	@GetMapping(“/1“)
 	public String readRequest(HttpServletRequest currentRequest) {
 		//liefert View-Template main!
 		return “main“;
 	}
-
 	@ResponseBody
 	@GetMapping(“/2“)
 	//Spring liefert hier immer den aktuellen Accept-Header und Request-Body
@@ -531,7 +529,6 @@ public class Service {
 		// liefert Wert main als Text
 		return “main“;
 	}	
-
 }
 ```
 				</textarea>
@@ -541,14 +538,12 @@ public class Service {
 ``` java
 @Controller
 public class Service {
-
-        @ResponseBody
+	@ResponseBody
 	@GetMapping(“/1“)
 	public Info readRequest(HttpServletRequest currentRequest) {
 		// liefert serialisiertes Info-Object (als JSON, XML…) je nach installierten Mappern!
 		return new Info();
 	}
-
 	@ResponseBody
 	@GetMapping(“/2“)
 	public ResponseEntity readBody(HttpServletRequest currentRequest) {
@@ -557,7 +552,6 @@ public class Service {
 		// ...
 		return response;
 	}	
-
 }
 ```
 				</textarea>
