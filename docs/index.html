@@ -542,6 +542,7 @@ public class Service {
 @Controller
 public class Service {
 
+        @ResponseBody
 	@GetMapping(“/1“)
 	public Info readRequest(HttpServletRequest currentRequest) {
 		// liefert serialisiertes Info-Object (als JSON, XML…) je nach installierten Mappern!
