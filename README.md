@@ -1,6 +1,12 @@
 # Folien zur Vorlesung
 https://mbs99.github.io/dhbw_webeng/
 
+oder als PDF
+
+https://mbs99.github.io/dhbw_webeng/?print-pdf
+
+(Druckdialog im Browser, Querformat einstellen, als PDF speichern...)
+
 
 # Beispielprogramme zur Vorlesung
 
